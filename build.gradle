@@ -11,6 +11,14 @@ repositories {
     mavenCentral()
 }
 
+def springBootDependentsVersion = '2.2.1.RELEASE'
+
 dependencies {
+
+    // Spring Boot Dependencies
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootDependentsVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootDependentsVersion
+
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
