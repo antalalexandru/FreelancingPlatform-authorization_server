@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@SuppressWarnings("SpringJavaAutowiredMembersInspection")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired

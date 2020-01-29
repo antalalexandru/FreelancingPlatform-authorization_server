@@ -1,9 +1,5 @@
 package authorization.data.entity;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Collections;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -23,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.Collection;
+import java.util.Collections;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
@@ -32,7 +30,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails, Serializable {
+public class User implements UserDetails {
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,7 +56,7 @@ public class User implements UserDetails, Serializable {
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(group.getRole().getName()));
+        return Collections.singleton(new SimpleGrantedAuthority(group.getRole()));
     }
 
     @Override
