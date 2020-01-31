@@ -47,6 +47,11 @@ public class User implements UserDetails {
     @Column
     @ToString.Exclude
     @JsonProperty(access = WRITE_ONLY)
+    private boolean is_enabled;
+
+    @Column
+    @ToString.Exclude
+    @JsonProperty(access = WRITE_ONLY)
     private String email;
 
     @ManyToOne
@@ -74,12 +79,8 @@ public class User implements UserDetails {
         return true;
     }
 
-    /**
-     * TODO when warning system is implemented.
-     * Should return false is user is banned or temporarily suspended, true otherwise.
-     */
     @Override
     public boolean isEnabled() {
-        return true;
+        return is_enabled;
     }
 }
