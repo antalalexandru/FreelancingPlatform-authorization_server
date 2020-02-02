@@ -49,7 +49,7 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
                 .authorizedGrantTypes("password", "refresh_token", "client_credentials")
                 .scopes("write")
                 .authorities()
-                .accessTokenValiditySeconds(60 * 60)
+                .accessTokenValiditySeconds(60 * 60 * 6)
                 .refreshTokenValiditySeconds(60 * 60 * 24 * 30)
                 .autoApprove()
         ;
