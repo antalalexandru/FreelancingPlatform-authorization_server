@@ -1,5 +1,6 @@
 package authorization.config;
 
+import authorization.data.entity.User;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
@@ -15,6 +16,8 @@ public class CustomTokenEnhancer implements TokenEnhancer {
         final Map<String, Object> additionalInfo = new HashMap<>();
         // additionalInfo.put("organization", authentication.getName() + randomAlphabetic(4));
         additionalInfo.put("roles", StringUtils.join(authentication.getAuthorities(), ','));
+        User user = (User) authentication.getUserAuthentication().getPrincipal();
+        additionalInfo.put("user_id", String.valueOf(user.getId()));
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
         return accessToken;
     }
